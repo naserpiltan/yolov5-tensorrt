@@ -88,6 +88,7 @@ void writeDetectionFile(const std::string &detectionFileAddress, const int &clas
 bool readPermitFile(const std::string &permitFileAddress)
 {
     std::ifstream permitFile(permitFileAddress);
+    std::string shouldbe = "1";
     std::string line;
     if (permitFile.is_open()) {
         while (getline(permitFile, line)) {
@@ -98,7 +99,7 @@ bool readPermitFile(const std::string &permitFileAddress)
             return false;
     }
     permitFile.close();
-    return line=="1";
+    return line.compare(shouldbe);
 }
 
 int main(int argc, char *argv[])
