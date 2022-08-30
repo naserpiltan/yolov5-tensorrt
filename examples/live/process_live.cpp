@@ -101,7 +101,7 @@ bool readPermitFile(const std::string &permitFileAddress)
         return false;
     }
     permitFile.close();
-    return true;//line.compare(shouldbe);
+    return line.compare(shouldbe)==0;
 }
 
 int main(int argc, char *argv[])
