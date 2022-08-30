@@ -94,7 +94,7 @@ bool readPermitFile(const std::string &permitFileAddress)
     std::cout<<__LINE__<<std::endl;
     if (permitFile.is_open()) {
         std::cout<<__LINE__<<std::endl;
-        for(getline( permitFile, line))
+        if(getline( permitFile, line ))
         {
             std::cout<<__LINE__<<std::endl;
             if (line.length() > 0){
