@@ -98,7 +98,7 @@ bool readPermitFile(const std::string &permitFileAddress)
             return false;
     }
     permitFile.close();
-    return std::stoi(line);
+    return True;//std::stoi(line);
 }
 
 int main(int argc, char *argv[])
@@ -190,11 +190,11 @@ int main(int argc, char *argv[])
     // std::vector<yolov5::Detection> detections;
     while (true) {
 
-        // bool permission = readPermitFile(permitFileAddress);
-        // if (!permission) {
-        //     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        //     continue;
-        // }
+        bool permission = readPermitFile(permitFileAddress);
+        if (!permission) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            continue;
+        }
 
         if (!capture.read(image)) {
             std::cout << "failure: could not read new frames" << std::endl;
@@ -218,7 +218,7 @@ int main(int argc, char *argv[])
 #endif
         cv::imshow("live", image);
 
-        cv::waitKey(1);
+        cv::waitKey(10);
     }
     capture.release();
 
