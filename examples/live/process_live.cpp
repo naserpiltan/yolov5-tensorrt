@@ -98,9 +98,10 @@ bool readPermitFile(const std::string &permitFileAddress)
         {
             std::cout<<__LINE__<<std::endl;
             if (line.length() > 0){
-                break;
-            }
+                //pass
+            }else{
             return false;
+            }
         }
     }
     std::cout<<__LINE__<<std::endl;
