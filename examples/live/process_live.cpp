@@ -181,13 +181,13 @@ int main(int argc, char *argv[])
     /*
         Set up the GUI
     */
-    cv::namedWindow("live");
+    // cv::namedWindow("live");
 
     /*
         Start Inference
     */
     cv::Mat image;
-    std::vector<yolov5::Detection> detections;
+    // std::vector<yolov5::Detection> detections;
     while (true) {
 
         bool permission = readPermitFile(permitFileAddress);
