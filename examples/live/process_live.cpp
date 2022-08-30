@@ -92,12 +92,12 @@ bool readPermitFile(const std::string &permitFileAddress)
     std::string shouldbe = "1";
     std::string line = "0";
 
-    std::cout << __LINE__ << std::endl;
+    // std::cout << __LINE__ << std::endl;
     // if (permitFile.is_open())
     {
-        std::cout << __LINE__ << std::endl;
+        // std::cout << __LINE__ << std::endl;
         if (getline(permitFile, line)) {
-            std::cout << __LINE__ << std::endl;
+            // std::cout << __LINE__ << std::endl;
             if (line.length() > 0) {
                 // pass
             }
@@ -106,11 +106,11 @@ bool readPermitFile(const std::string &permitFileAddress)
             }
         }
     }
-    std::cout << __LINE__ << std::endl;
+    // std::cout << __LINE__ << std::endl;
     permitFile.close();
-    std::cout << __LINE__ << std::endl;
-    std::cout << line << std::endl;
-    std::cout << line.compare(shouldbe) << std::endl;
+    // std::cout << __LINE__ << std::endl;
+    // std::cout << line << std::endl;
+    // std::cout << line.compare(shouldbe) << std::endl;
     return line.compare(shouldbe) == 0;
 }
 
@@ -230,11 +230,13 @@ int main(int argc, char *argv[])
             const cv::Scalar magenta(255, 51, 153); /*  BGR */
             yolov5::visualizeDetection(detections[i], &image, magenta, 1.0);
             writeDetectionFile(detectionFileAddress, detections[i].classId());
+            std::cout << "Detected class " << detections[i].className() << " ID: " << detections[i].classId()
+                      << std::endl;
         }
 #endif
-        cv::imshow("live", image);
+        // cv::imshow("live", image);
 
-        cv::waitKey(10);
+        // cv::waitKey(10);
     }
     capture.release();
 
