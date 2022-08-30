@@ -26,7 +26,7 @@
  *
  */
 
-// #define USEENGINE
+#define USEENGINE
 
 #include "yolov5_detector.hpp"
 #include <fstream>
@@ -98,7 +98,7 @@ bool readPermitFile(const std::string &permitFileAddress)
             return false;
     }
     permitFile.close();
-    return true;//std::stoi(line);
+    return line=="1";
 }
 
 int main(int argc, char *argv[])
