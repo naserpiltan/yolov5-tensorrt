@@ -26,6 +26,8 @@
  *
  */
 
+// #define USEENGINE
+
 #include "yolov5_detector.hpp"
 #include <fstream>
 #include <iostream>
@@ -109,6 +111,7 @@ int main(int argc, char *argv[])
         return 0;
     }
 
+#ifdef USEENGINE
     if (!cmdOptionExists(argv, argv + argc, "--engine", true)) {
         std::cout << "Missing mandatory argument" << std::endl;
         printHelp();
@@ -120,6 +123,7 @@ int main(int argc, char *argv[])
     if (cmdOptionExists(argv, argv + argc, "--classes", true)) {
         classesFile = getCmdOption(argv, argv + argc, "--classes");
     }
+#endif
 
     cv::VideoCapture capture;
     if (!capture.open(0, cv::CAP_ANY)) {
@@ -138,6 +142,7 @@ int main(int argc, char *argv[])
     /*
         Create the YoloV5 Detector object.
     */
+#ifdef USEENGINE
     yolov5::Detector detector;
 
     /*
@@ -172,7 +177,7 @@ int main(int argc, char *argv[])
         }
         detector.setClasses(classes);
     }
-
+#endif
     /*
         Set up the GUI
     */
@@ -195,7 +200,7 @@ int main(int argc, char *argv[])
             std::cout << "failure: could not read new frames" << std::endl;
             break;
         }
-
+#ifdef USEENGINE
         r = detector.detect(image, &detections, yolov5::INPUT_BGR);
         if (r != yolov5::RESULT_SUCCESS) {
             std::cout << "detect() failed: " << yolov5::result_to_string(r) << std::endl;
@@ -210,6 +215,7 @@ int main(int argc, char *argv[])
             yolov5::visualizeDetection(detections[i], &image, magenta, 1.0);
             writeDetectionFile(detectionFileAddress, detections[i].classId());
         }
+#endif
         cv::imshow("live", image);
 
         cv::waitKey(1);
