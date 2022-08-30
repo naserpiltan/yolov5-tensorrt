@@ -92,7 +92,7 @@ bool readPermitFile(const std::string &permitFileAddress)
     std::string line;
 
     if (permitFile.is_open()) {
-        for( std::string line; getline( input, line ); )
+        for( std::string line; getline( permitFile, line ); )
         {
             if (line.length() > 0){
                 break;
