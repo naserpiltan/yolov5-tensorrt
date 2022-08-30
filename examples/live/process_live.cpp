@@ -148,9 +148,9 @@ int main(int argc, char *argv[])
         std::cout << "Frame size: " << tmpFrame.size() << std::endl;
     }
 
-    std::string permitFileAddress = "~/Desktop/permit.txt";
+    std::string permitFileAddress = "/home/gc/Desktop/permit.txt";
 
-    std::string detectionFileAddress = "~/Desktop/detection.txt";
+    std::string detectionFileAddress = "/home/gc/Desktop/detection.txt";
     /*
         Create the YoloV5 Detector object.
     */
