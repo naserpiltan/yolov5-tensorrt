@@ -104,7 +104,6 @@ bool readPermitFile(const std::string &permitFileAddress)
         }
     }
     std::cout<<__LINE__<<std::endl;
-    
     permitFile.close();
     std::cout<<__LINE__<<std::endl;
     std::cout<<line<<std::endl;
@@ -218,8 +217,6 @@ int main(int argc, char *argv[])
         if (r != yolov5::RESULT_SUCCESS) {
             std::cout << "detect() failed: " << yolov5::result_to_string(r) << std::endl;
             return 1;
-        }else{
-            std::cout<<"HHHHHHHHHHHHHHHHH"<<std::endl;
         }
 
         /*
