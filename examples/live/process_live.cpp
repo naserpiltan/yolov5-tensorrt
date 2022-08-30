@@ -90,16 +90,17 @@ bool readPermitFile(const std::string &permitFileAddress)
     std::ifstream permitFile(permitFileAddress);
     std::string shouldbe = "1";
     std::string line;
+
     if (permitFile.is_open()) {
-        while (getline(permitFile, line)) {
-            if (line.length() > 0)
+        for( std::string line; getline( input, line ); )
+        {
+            if (line.length() > 0){
                 break;
-        }
-        if (!line.length())
+            }
             return false;
-    }else{
-        return false;
+        }
     }
+    
     permitFile.close();
     return line.compare(shouldbe)==0;
 }
@@ -193,13 +194,13 @@ int main(int argc, char *argv[])
     std::vector<yolov5::Detection> detections;
     while (true) {
 
-        // bool permission = readPermitFile(permitFileAddress);
-        // if (!permission) {
-        //     std::this_thread::sleep_for(std::chrono::milliseconds(500));
-        //     continue;
-        // }else{
-        //     std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        // }
+        bool permission = readPermitFile(permitFileAddress);
+        if (!permission) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
+            continue;
+        }else{
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        }
 
         if (!capture.read(image)) {
             std::cout << "failure: could not read new frames" << std::endl;
