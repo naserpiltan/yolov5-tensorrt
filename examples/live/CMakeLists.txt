@@ -4,6 +4,8 @@
 
 add_executable(process_live 
     process_live.cpp
+    backward.cpp
+    backward.hpp
 )
 target_include_directories(process_live PUBLIC 
     ${OpenCV_INCLUDE_DIRS} 
