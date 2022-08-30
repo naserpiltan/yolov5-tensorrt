@@ -107,6 +107,8 @@ bool readPermitFile(const std::string &permitFileAddress)
     
     permitFile.close();
     std::cout<<__LINE__<<std::endl;
+    std::cout<<line<<std::endl;
+    std::cout<<line.compare(shouldbe)<<std::endl;
     return line.compare(shouldbe)==0;
 }
 
