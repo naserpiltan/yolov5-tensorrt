@@ -69,6 +69,9 @@ void printHelp()
                  "--engine :        [mandatory] specify the engine file\n"
                  "--camera :        [optional] camera index\n"
                  "--classes :       [optional] specify list of class names\n\n"
+                 "--permit :       [optional] specify permit file address\n\n"
+                 "--detect :       [optional] specify detection file address\n\n"
+
                  "Example usage:\n"
                  "process_live --engine yolov5s.engine --camera 0"
               << std::endl;
