@@ -98,7 +98,7 @@ bool readPermitFile(const std::string &permitFileAddress)
             return false;
     }
     permitFile.close();
-    return True;//std::stoi(line);
+    return true;//std::stoi(line);
 }
 
 int main(int argc, char *argv[])
