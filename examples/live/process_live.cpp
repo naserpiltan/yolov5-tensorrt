@@ -34,6 +34,7 @@
 
 #include <chrono>
 #include <iostream>
+#include <thread>
 
 char *getCmdOption(char **begin, char **end, const std::string &option)
 {
@@ -196,6 +197,7 @@ int main(int argc, char *argv[])
 
         bool permission = readPermitFile(permitFileAddress);
         if (!permission) {
+            std::this_thread::sleep_for(std::chrono::milliseconds(500));
             continue;
         }
 
