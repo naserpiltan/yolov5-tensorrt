@@ -97,6 +97,8 @@ bool readPermitFile(const std::string &permitFileAddress)
         }
         if (!line.length())
             return false;
+    }else{
+        return false;
     }
     permitFile.close();
     return line.compare(shouldbe);
