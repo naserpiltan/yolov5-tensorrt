@@ -197,6 +197,8 @@ int main(int argc, char *argv[])
         if (!permission) {
             std::this_thread::sleep_for(std::chrono::milliseconds(500));
             continue;
+        }else{
+            std::this_thread::sleep_for(std::chrono::milliseconds(200));
         }
 
         if (!capture.read(image)) {
