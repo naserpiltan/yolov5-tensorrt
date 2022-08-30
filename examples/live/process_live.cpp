@@ -69,9 +69,7 @@ void printHelp()
                  "-h --help :       show this help menu\n"
                  "--engine :        [mandatory] specify the engine file\n"
                  "--classes :       [optional] specify list of class names\n\n"
-
                  "Example usage:\n"
-                 "process_live --engine yolov5s.engine --camera 0"
               << std::endl;
 }
 
@@ -123,7 +121,16 @@ int main(int argc, char *argv[])
         classesFile = getCmdOption(argv, argv + argc, "--classes");
     }
 
-    int cameraIndex = 0;
+    cv::VideoCapture capture;
+    if (!capture.open(0, cv::CAP_ANY)) {
+        std::cout << "failure: could not open capture device" << std::endl;
+        return 1;
+    }
+    else {
+        cv::Mat tmpFrame{};
+        capture.read(tmpFrame);
+        std::cout << "Frame size: " << tmpFrame.size() << std::endl;
+    }
 
     std::string permitFileAddress = "~/Desktop/permit.txt";
 
@@ -170,15 +177,6 @@ int main(int argc, char *argv[])
         Set up the GUI
     */
     cv::namedWindow("live");
-
-    /*
-        Set up the Camera
-    */
-    cv::VideoCapture capture;
-    if (!capture.open(cameraIndex, cv::CAP_ANY)) {
-        std::cout << "failure: could not open capture device" << std::endl;
-        return 1;
-    }
 
     /*
         Start Inference
