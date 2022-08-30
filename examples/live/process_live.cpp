@@ -193,13 +193,13 @@ int main(int argc, char *argv[])
     std::vector<yolov5::Detection> detections;
     while (true) {
 
-        bool permission = readPermitFile(permitFileAddress);
-        if (!permission) {
-            std::this_thread::sleep_for(std::chrono::milliseconds(500));
-            continue;
-        }else{
-            std::this_thread::sleep_for(std::chrono::milliseconds(200));
-        }
+        // bool permission = readPermitFile(permitFileAddress);
+        // if (!permission) {
+        //     std::this_thread::sleep_for(std::chrono::milliseconds(500));
+        //     continue;
+        // }else{
+        //     std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        // }
 
         if (!capture.read(image)) {
             std::cout << "failure: could not read new frames" << std::endl;
