@@ -210,6 +210,8 @@ int main(int argc, char *argv[])
         if (r != yolov5::RESULT_SUCCESS) {
             std::cout << "detect() failed: " << yolov5::result_to_string(r) << std::endl;
             return 1;
+        }else{
+            std::cout<<"HHHHHHHHHHHHHHHHH"<<std::endl;
         }
 
         /*
