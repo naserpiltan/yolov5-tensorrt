@@ -68,10 +68,7 @@ void printHelp()
     std::cout << "Options:\n"
                  "-h --help :       show this help menu\n"
                  "--engine :        [mandatory] specify the engine file\n"
-                 "--camera :        [optional] camera index\n"
                  "--classes :       [optional] specify list of class names\n\n"
-                 "--permit :       [optional] specify permit file address\n\n"
-                 "--detect :       [optional] specify detection file address\n\n"
 
                  "Example usage:\n"
                  "process_live --engine yolov5s.engine --camera 0"
@@ -121,21 +118,16 @@ int main(int argc, char *argv[])
     }
     const std::string engineFile(getCmdOption(argv, argv + argc, "--engine"));
 
-    int cameraIndex = 0;
-    if (cmdOptionExists(argv, argv + argc, "--camera", true)) {
-        const std::string option = getCmdOption(argv, argv + argc, "--camera");
-        cameraIndex = std::atoi(option.c_str());
-    }
-
     std::string classesFile;
     if (cmdOptionExists(argv, argv + argc, "--classes", true)) {
         classesFile = getCmdOption(argv, argv + argc, "--classes");
     }
 
-    std::string permitFileAddress = getCmdOption(argv, argv + argc, "--permit");
+    int cameraIndex = 0;
 
-    std::string detectionFileAddress = getCmdOption(argv, argv + argc, "--detect");
+    std::string permitFileAddress = "~/Desktop/permit.txt";
 
+    std::string detectionFileAddress = "~/Desktop/detection.txt";
     /*
         Create the YoloV5 Detector object.
     */
