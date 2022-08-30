@@ -91,17 +91,22 @@ bool readPermitFile(const std::string &permitFileAddress)
     std::string shouldbe = "1";
     std::string line = "0";
 
+std::cout<<__LINE__<<std::endl;
     if (permitFile.is_open()) {
+        std::cout<<__LINE__<<std::endl;
         for( std::string line; getline( permitFile, line ); )
         {
+            std::cout<<__LINE__<<std::endl;
             if (line.length() > 0){
                 break;
             }
             return false;
         }
     }
+    std::cout<<__LINE__<<std::endl;
     
     permitFile.close();
+    std::cout<<__LINE__<<std::endl;
     return line.compare(shouldbe)==0;
 }
 
